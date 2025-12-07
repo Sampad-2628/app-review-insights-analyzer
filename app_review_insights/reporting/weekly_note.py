@@ -94,6 +94,7 @@ def generate_weekly_note(tagged_reviews, output_file=config.WEEKLY_REPORT_FILE):
     # Example actions: "Improve charting tools UX", "Implement payment retry UX", "Add transparent brokerage page"
     
     # If we want to force the example actions for the demo:
+    # If we want to force the example actions for the demo:
     if "User Experience" in top_themes or "Pricing & Charges" in top_themes:
          # Use the dynamic list from the matched themes
          for action in priority_actions:
@@ -102,6 +103,7 @@ def generate_weekly_note(tagged_reviews, output_file=config.WEEKLY_REPORT_FILE):
          for action in priority_actions:
              report += f"- {action}\n"
             
+    os.makedirs(os.path.dirname(output_file), exist_ok=True)
     with open(output_file, 'w', encoding='utf-8') as f:
         f.write(report)
         

@@ -26,6 +26,7 @@ def generate_email_draft(tagged_reviews, output_file=config.EMAIL_DRAFT_FILE):
 
     full_content = f"Subject: {subject}\n\n{body_text}"
 
+    os.makedirs(os.path.dirname(output_file), exist_ok=True)
     with open(output_file, 'w', encoding='utf-8') as f:
         f.write(full_content)
         

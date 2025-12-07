@@ -25,7 +25,12 @@ def fetch_reviews(app_id=config.APP_ID, lang=config.LANG, country=config.COUNTRY
             
     return result
 
+import os
+
 def save_raw_reviews(reviews_data, filepath=config.RAW_REVIEWS_FILE):
+    # Ensure directory exists
+    os.makedirs(os.path.dirname(filepath), exist_ok=True)
+    
     with open(filepath, 'w', encoding='utf-8') as f:
         json.dump(reviews_data, f, indent=2)
     print(f"Saved {len(reviews_data)} raw reviews to {filepath}")

@@ -29,6 +29,7 @@ def scrape_reviews_action(app_url):
     save_raw_reviews(raw_reviews)
     
     filtered_reviews = filter_reviews(raw_reviews)
+    os.makedirs(os.path.dirname(config.FILTERED_REVIEWS_FILE), exist_ok=True)
     with open(config.FILTERED_REVIEWS_FILE, 'w', encoding='utf-8') as f:
         json.dump(filtered_reviews, f, indent=2)
         
@@ -58,6 +59,7 @@ def categorize_reviews_action():
         
     tagged_reviews = theme_reviews(filtered_reviews)
     
+    os.makedirs(os.path.dirname(config.TAGGED_REVIEWS_FILE), exist_ok=True)
     with open(config.TAGGED_REVIEWS_FILE, 'w', encoding='utf-8') as f:
         json.dump(tagged_reviews, f, indent=2)
         
