@@ -1,4 +1,5 @@
 import os
+print("DEBUG: Loaded weekly_note.py, os imported successfully.")
 import pandas as pd
 from datetime import datetime
 from .. import config
