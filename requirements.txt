@@ -2,4 +2,4 @@ google-play-scraper
 pandas
 python-dotenv
 streamlit
-app-store-scraper
+

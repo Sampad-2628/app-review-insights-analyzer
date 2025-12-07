@@ -1,15 +1,25 @@
 import json
 import pandas as pd
 from datetime import datetime, timedelta
-from app_store_scraper import AppStore
 from .. import config
 import os
 import time
+
+# Stubbing the import to prevent deployment crashes
+try:
+    from app_store_scraper import AppStore
+except ImportError:
+    AppStore = None
+    print("WARNING: app_store_scraper library not found. iOS scraping will be disabled.")
 
 def fetch_ios_reviews(app_name, app_id, country='in', count=500):
     """
     Fetches reviews from iOS App Store using app_store_scraper.
     """
+    if AppStore is None:
+        print("❌ app_store_scraper not installed. Returning empty list.")
+        return []
+
     print(f"Fetching iOS reviews for {app_name} (ID: {app_id})...")
     
     try:
@@ -97,8 +107,8 @@ def filter_and_save_ios_reviews(reviews_data, app_name="Groww"):
     return filtered
 
 if __name__ == "__main__":
-    # Test run for Groww
-    # Groww iOS ID: 1351630927
-    # Name: groww-stocks-mutual-fund
-    reviews = fetch_ios_reviews(app_name="groww-stocks-mutual-fund", app_id=1351630927)
-    filter_and_save_ios_reviews(reviews)
+    if AppStore:
+        reviews = fetch_ios_reviews(app_name="groww-stocks-mutual-fund", app_id=1351630927)
+        filter_and_save_ios_reviews(reviews)
+    else:
+        print("Skipping main execution due to missing dependency.")
