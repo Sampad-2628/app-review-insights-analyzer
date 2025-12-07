@@ -1,0 +1,17 @@
+Subject: Weekly Review Pulse - com.nextbillion.groww
+
+Hi Team,
+
+Here is the summary of user reviews for the last 10 weeks.
+
+**Overview:**
+- Total Reviews: 194
+- Average Rating: 3.54
+- Top Concern: User Experience
+
+**Action Items:**
+- Investigate the top reported issues in "User Experience".
+- Review the attached detailed report for specific user quotes.
+
+Best,
+App Review Insights Bot

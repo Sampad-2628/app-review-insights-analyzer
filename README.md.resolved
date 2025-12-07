@@ -1,0 +1,25 @@
+# App Review Insights Analyzer
+
+Automated pipeline to scrape, analyze, and report on Google Play Store reviews for the Groww app.
+
+## Features
+- Scrapes reviews from Google Play Store
+- Filters for recent (last 8-10 weeks) and meaningful reviews
+- Categorizes reviews into themes (Performance, Trading, Support, etc.)
+- Generates a Weekly Pulse Report (Markdown)
+- Generates an Email Draft
+
+## Setup
+1. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+2. Run the pipeline:
+   ```bash
+   python scripts/run_full_pipeline.py
+   ```
+
+## Output
+- Reports are saved in `output/`
+- Data is saved in `data/`

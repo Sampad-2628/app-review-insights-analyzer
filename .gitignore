@@ -1,0 +1,7 @@
+.env
+*.pyc
+__pycache__/
+output/email_logs/
+output/*.md
+data/*.json
+data/*.csv
