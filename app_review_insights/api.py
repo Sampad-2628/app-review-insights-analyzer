@@ -35,7 +35,13 @@ def scrape_reviews_action(app_url):
         
     # Save to CSV
     df = pd.DataFrame(filtered_reviews)
+    try:
+        os.makedirs(config.OUTPUT_DIR, exist_ok=True)
+    except Exception as e:
+        print(f"DEBUG: Failed to create CSV output dir: {e}")
+        
     csv_path = os.path.join(config.OUTPUT_DIR, "reviews_latest.csv")
+    print(f"DEBUG: Saving CSV to {csv_path}")
     df.to_csv(csv_path, index=False)
         
     return {
@@ -45,7 +51,8 @@ def scrape_reviews_action(app_url):
         "data_preview": {
             "review_count": len(filtered_reviews),
             "app_id": app_id,
-            "csv_path": csv_path
+            "csv_path": csv_path,
+            "debug_info": "Directory checks applied."
         }
     }
 
